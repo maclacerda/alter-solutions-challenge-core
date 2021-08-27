@@ -113,7 +113,7 @@ public class URLRequestBuilder {
             }
             
         } catch {
-            throw NSError(domain: "url request builder", code: -1, description: error.localizedDescription)
+            throw error
         }
         
         return urlRequest

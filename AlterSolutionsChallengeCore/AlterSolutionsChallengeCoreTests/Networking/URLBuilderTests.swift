@@ -130,8 +130,9 @@ private final class URLRequestAdapterStub: URLRequestAdapter {
     
     func adapt(_ urlRequest: URLRequest) throws -> URLRequest {
         if shouldThrowError {
-            throw NSError()
+            throw NSError(domain: "raise exception in stub", code: -1, description: "throws custom error")
         }
+        
         return urlRequest
     }
     
