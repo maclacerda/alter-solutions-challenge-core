@@ -16,7 +16,7 @@ let package = Package(
         .binaryTarget(
             name: "AlterSolutionsChallengeCore",
             url: "https://github.com/maclacerda/alter-solutions-challenge-core/raw/main/binary-framework/alter-solutions-challenge-core.xcframework.zip",
-            checksum: "06b1b7f294ec1d3e09fb2f84944cfcb5541c6a13302158c7cd40b868608ebb8a"
+            checksum: "18f48537e5d534dc19960d3bdd48297f6c069950a11694d22cbc9bb182be412e"
         )
     ]
 )
