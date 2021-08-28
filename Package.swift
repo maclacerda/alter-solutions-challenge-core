@@ -13,6 +13,10 @@ let package = Package(
         )
     ],
     targets: [
+        .target(
+            name: "AlterSolutionsChallengeCore",
+            path: "AlterSolutionsChallengeCore"
+        ),
         .binaryTarget(
             name: "AlterSolutionsChallengeCore",
             url: "https://github.com/maclacerda/alter-solutions-challenge-core/raw/main/binary-framework/alter-solutions-challenge-core.xcframework.zip",
