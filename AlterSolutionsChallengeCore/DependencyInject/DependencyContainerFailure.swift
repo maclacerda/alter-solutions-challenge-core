@@ -5,6 +5,8 @@
 //  Created by Marcos Lacerda on 26/08/21.
 //
 
+import Foundation
+
 public enum DependencyContainerFailure: Error, LocalizedError {
     
     case couldNotFindDependency(String)
