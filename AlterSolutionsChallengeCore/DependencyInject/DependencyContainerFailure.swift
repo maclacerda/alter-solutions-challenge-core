@@ -8,22 +8,24 @@
 import Foundation
 
 public enum DependencyContainerFailure: Error, LocalizedError {
-    
+
     case couldNotFindDependency(String)
     case tryingToRegisterDependencyTwice(String)
-    
+
 }
 
+// swiftlint:disable line_length
 extension DependencyContainerFailure {
-    
+
     public var errorDescription: String? {
         switch self {
         case let .couldNotFindDependency(message):
             return "Not able to resolve dependecy: \(message), verify if it's correct registered in dependency container"
-                
+
         case let .tryingToRegisterDependencyTwice(message):
             return "Trying to register `\(message)` twice!"
         }
     }
-    
+
 }
+// swiftlint:enable line_length

@@ -12,8 +12,8 @@ import Foundation
 /// - body: parameters to be embeded on the body of the request
 /// - url: path parameters to be set o the URL
 public enum URLRequestParameters {
-    
+
     case body(_: [String: Any]?)
     case url(_: [String: Any]?)
-    
+
 }

@@ -15,17 +15,17 @@ import Foundation
 /// - patch: PATCH method
 /// - delete: DELETE method
 public enum HTTPMethod: String {
-    
+
     /// Defines the suported types of HTTP methods
     case post
     case put
     case get
     case delete
     case patch
-    
+
     /// Returns the name of the method to be used in the request
     public var name: String {
         return rawValue.uppercased()
     }
-    
+
 }

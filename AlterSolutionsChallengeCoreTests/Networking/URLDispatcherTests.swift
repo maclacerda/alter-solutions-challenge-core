@@ -14,5 +14,5 @@ class URLDispatcherTests: XCTestCase {
         let sut = URLSessionDispatcher()
         XCTAssertNotNil(sut)
     }
-    
+
 }

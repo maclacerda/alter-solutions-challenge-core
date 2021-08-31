@@ -11,13 +11,14 @@ import Foundation
 /// by calling whoever we want to use as a client to deal
 /// with networking...
 public protocol URLRequestDispatcherProtocol {
-    
+
     /// Executes the request and provides a completion with the response
     ///
     /// - Parameters:
     ///   - request: the request to be executed
     ///   - completion: the requests callback
     /// - Returns: a token in order to let us manipulate the task if needed
-    func execute(request: URLRequestProtocol, completion: @escaping (_ response: Result<Data?, URLRequestError>) -> Void) -> URLRequestToken?
-    
+    func execute(request: URLRequestProtocol,
+                 completion: @escaping (_ response: Result<Data?, URLRequestError>) -> Void) -> URLRequestToken?
+
 }

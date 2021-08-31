@@ -8,18 +8,18 @@
 import Foundation
 
 public class URLRequestBuilder {
-    
+
     // MARK: - Properties
-    
+
     private var baseURL: URL
     private var path: String?
     private var method: HTTPMethod = .get
     private var headers: [String: Any]?
     private var parameters: URLRequestParameters?
     private var adapters: [URLRequestAdapter] = []
-    
+
     // MARK: - Initialization
-    
+
     /// Initialises the request
     ///
     /// - Parameters:
@@ -29,9 +29,9 @@ public class URLRequestBuilder {
         self.baseURL = baseURL
         self.path = path
     }
-    
+
     // MARK: - Builder methods
-    
+
     /// Sets the method
     ///
     /// - Parameter method: an HTTPMethod
@@ -41,7 +41,7 @@ public class URLRequestBuilder {
         self.method = method
         return self
     }
-    
+
     /// Sets the request path
     ///
     /// - Parameter path: a path
@@ -51,7 +51,7 @@ public class URLRequestBuilder {
         self.path = path
         return self
     }
-    
+
     /// Sets the request headers
     ///
     /// - Parameter headers: the headers
@@ -61,7 +61,7 @@ public class URLRequestBuilder {
         self.headers = headers
         return self
     }
-    
+
     /// Sets the request parameters
     ///
     /// - Parameter parameters: some parameters
@@ -71,7 +71,7 @@ public class URLRequestBuilder {
         self.parameters = parameters
         return self
     }
-    
+
     /// Sets an adapter, Ex: OAuthAdapter
     ///
     /// - Parameter adapter: an adapter
@@ -82,65 +82,63 @@ public class URLRequestBuilder {
         adapters.append(adapter)
         return self
     }
-    
+
     /// Buuilds an URLRequest as previously defined
     ///
     /// - Returns: a configurad url request
     public func build() throws -> URLRequest {
-        
+
         var url = baseURL
         if let path = path {
             url = baseURL.appendingPathComponent(path)
         }
-        
+
         var urlRequest = URLRequest(url: url,
                                     cachePolicy: .reloadIgnoringLocalAndRemoteCacheData,
                                     timeoutInterval: 100)
-        
+
         urlRequest.httpMethod = method.name
         setupRequest(&urlRequest, with: parameters)
-        
+
         headers?
             .compactMapValues { $0 as? String }
             .forEach {
                 urlRequest.addValue($0.value, forHTTPHeaderField: $0.key)
             }
-        
+
         do {
-            
             try adapters.forEach {
                 urlRequest = try $0.adapt(urlRequest)
             }
-            
         } catch {
             throw error
         }
-        
+
         return urlRequest
     }
-    
+
     // MARK: - Private Functions
-    
+
     private func setupRequest(_ request: inout URLRequest, with parameters: URLRequestParameters?) {
         guard let parameters = parameters else { return }
-        
+
         switch parameters {
-            case .body(let bodyParameters):
-                guard let bodyParameters = bodyParameters,
-                      let payload = try? JSONSerialization.data(withJSONObject: bodyParameters, options: []) else { return }
-                
-                request.httpBody = payload
-                
-            case .url(let urlParameters):
-                
-                guard let urlParameters = urlParameters,
-                      let url = request.url,
-                      var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return }
-                
-                urlComponents.queryItems = urlParameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
-                request.url = urlComponents.url
+        case .body(let bodyParameters):
+            guard let bodyParameters = bodyParameters,
+                  let payload = try? JSONSerialization.data(withJSONObject: bodyParameters, options: []) else { return }
+
+            request.httpBody = payload
+
+        case .url(let urlParameters):
+
+            guard let urlParameters = urlParameters,
+                  let url = request.url,
+                  var urlComponents = URLComponents(url: url, resolvingAgainstBaseURL: true) else { return }
+
+            urlComponents.queryItems = urlParameters.map { URLQueryItem(name: $0.key, value: "\($0.value)") }
+            request.url = urlComponents.url
         }
-        
+
     }
-    
+
 }
