@@ -47,6 +47,7 @@ class URLSessionDispatcherTests: XCTestCase {
 class MockSessionDispatcher: URLSessionDispatcher {
 
     override func execute(request: URLRequestProtocol,
+                          keyPath: String?,
                           completion: @escaping (Result<Data?, URLRequestError>) -> Void) -> URLRequestToken? {
         if request.baseURL.absoluteString == "https://someurl.com" {
             completion(.success("success".data(using: .utf8)))

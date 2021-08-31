@@ -16,9 +16,11 @@ public protocol URLRequestDispatcherProtocol {
     ///
     /// - Parameters:
     ///   - request: the request to be executed
+    ///   - keyPath: an optional `key` to extract json in result
     ///   - completion: the requests callback
     /// - Returns: a token in order to let us manipulate the task if needed
     func execute(request: URLRequestProtocol,
+                 keyPath: String?,
                  completion: @escaping (_ response: Result<Data?, URLRequestError>) -> Void) -> URLRequestToken?
 
 }

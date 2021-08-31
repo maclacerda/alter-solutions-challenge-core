@@ -36,14 +36,17 @@ public class URLSessionDispatcher: URLRequestDispatcherProtocol {
     ///
     /// - Parameters:
     ///   - request: the request to be executed
+    ///   - keyPath: an optional `key` to extract json in result
     ///   - completion: the requests callback
     /// - Returns: a token in order to let us manipulate the task if needed
     public func execute(request: URLRequestProtocol,
+                        keyPath: String? = nil,
                         completion: @escaping (Result<Data?, URLRequestError>) -> Void) -> URLRequestToken? {
         var urlRequestToken: URLRequestToken?
 
         do {
             let urlRequest = try request.buildURLRequest()
+
             let dataTask = session.dataTask(with: urlRequest) { [weak self] (data, urlResponse, error) in
                 let httpResponse = urlResponse as? HTTPURLResponse
                 let dataTaskResponse = DataTaskResponse(data: data, error: error, httpResponse: httpResponse)
@@ -56,7 +59,21 @@ public class URLSessionDispatcher: URLRequestDispatcherProtocol {
                         return
                     }
 
-                    completion(.success(data))
+                    guard let keyPathToExtract = keyPath else {
+                        completion(.success(data))
+                        return
+                    }
+
+                    let json = try? JSONSerialization.jsonObject(with: data, options: .allowFragments)
+
+                    guard let nestedJson = (json as AnyObject).value(forKeyPath: keyPathToExtract),
+                          JSONSerialization.isValidJSONObject(nestedJson),
+                          let dataExtracted = try? JSONSerialization.data(withJSONObject: nestedJson) else {
+                        completion(.failure(.unknown))
+                        return
+                    }
+
+                    completion(.success(dataExtracted))
                 }
             }
 
