@@ -7,7 +7,7 @@
 
 import Foundation
 
-protocol AnalyticsProtocol: AnyObject {
+public protocol AnalyticsProtocol: AnyObject {
 
     func sendEvent(with event: [String: Any])
 
