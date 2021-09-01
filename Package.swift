@@ -15,7 +15,8 @@ let package = Package(
     targets: [
         .target(
             name: "AlterSolutionsChallengeCore",
-            path: "AlterSolutionsChallengeCore"
+            path: "AlterSolutionsChallengeCore",
+            exclude:["Info.plist"]
         )
     ]
 )
