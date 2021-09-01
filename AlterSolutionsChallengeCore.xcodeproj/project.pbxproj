@@ -39,6 +39,8 @@
 		0FCF933F26D80D840092CC49 /* SecurityManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF933E26D80D840092CC49 /* SecurityManagerTests.swift */; };
 		0FCF934926D817850092CC49 /* ViewCodeProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF934826D817850092CC49 /* ViewCodeProtocolTests.swift */; };
 		0FCF934B26D81ADE0092CC49 /* ViewCodeProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF934A26D81ADE0092CC49 /* ViewCodeProtocol.swift */; };
+		0FCF944226DF02090092CC49 /* AnalyticsProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF944126DF02090092CC49 /* AnalyticsProtocol.swift */; };
+		0FCF946D26DF05B00092CC49 /* AnalyticsProtocolTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0FCF946C26DF05B00092CC49 /* AnalyticsProtocolTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -87,6 +89,10 @@
 		0FCF933E26D80D840092CC49 /* SecurityManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecurityManagerTests.swift; sourceTree = "<group>"; };
 		0FCF934826D817850092CC49 /* ViewCodeProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeProtocolTests.swift; sourceTree = "<group>"; };
 		0FCF934A26D81ADE0092CC49 /* ViewCodeProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewCodeProtocol.swift; sourceTree = "<group>"; };
+		0FCF944126DF02090092CC49 /* AnalyticsProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProtocol.swift; sourceTree = "<group>"; };
+		0FCF946526DF041B0092CC49 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		0FCF946726DF04340092CC49 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		0FCF946C26DF05B00092CC49 /* AnalyticsProtocolTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsProtocolTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +120,7 @@
 				0FCF92E026D7B8010092CC49 /* AlterSolutionsChallengeCore */,
 				0FCF92EB26D7B8010092CC49 /* AlterSolutionsChallengeCoreTests */,
 				0FCF92DF26D7B8010092CC49 /* Products */,
+				0FCF946426DF041B0092CC49 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -129,6 +136,7 @@
 		0FCF92E026D7B8010092CC49 /* AlterSolutionsChallengeCore */ = {
 			isa = PBXGroup;
 			children = (
+				0FCF944026DF01FB0092CC49 /* Analytics */,
 				0FCF934626D817700092CC49 /* ViewCode */,
 				0FCF933626D80A380092CC49 /* Security */,
 				0FCF930226D7CC4C0092CC49 /* Networking */,
@@ -142,6 +150,7 @@
 		0FCF92EB26D7B8010092CC49 /* AlterSolutionsChallengeCoreTests */ = {
 			isa = PBXGroup;
 			children = (
+				0FCF946B26DF059C0092CC49 /* Analytics */,
 				0FCF934726D817740092CC49 /* ViewCode */,
 				0FCF933726D80A3E0092CC49 /* Security */,
 				0FCF930926D7DA110092CC49 /* Networking */,
@@ -275,6 +284,31 @@
 				0FCF934826D817850092CC49 /* ViewCodeProtocolTests.swift */,
 			);
 			path = ViewCode;
+			sourceTree = "<group>";
+		};
+		0FCF944026DF01FB0092CC49 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				0FCF944126DF02090092CC49 /* AnalyticsProtocol.swift */,
+			);
+			path = Analytics;
+			sourceTree = "<group>";
+		};
+		0FCF946426DF041B0092CC49 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				0FCF946726DF04340092CC49 /* SystemConfiguration.framework */,
+				0FCF946526DF041B0092CC49 /* Security.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0FCF946B26DF059C0092CC49 /* Analytics */ = {
+			isa = PBXGroup;
+			children = (
+				0FCF946C26DF05B00092CC49 /* AnalyticsProtocolTests.swift */,
+			);
+			path = Analytics;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -421,6 +455,7 @@
 				0FCF932626D7DD130092CC49 /* URLRequestError.swift in Sources */,
 				0FCF932226D7DC440092CC49 /* URLRequestDispatcherProtocol.swift in Sources */,
 				0FCF931326D7DB120092CC49 /* URLRequestBuilder.swift in Sources */,
+				0FCF944226DF02090092CC49 /* AnalyticsProtocol.swift in Sources */,
 				0FCF931526D7DB4D0092CC49 /* URLRequestParameters.swift in Sources */,
 				0FCF931F26D7DC200092CC49 /* NSError+extensions.swift in Sources */,
 				0FCF92FA26D7B84E0092CC49 /* DependencyInject.swift in Sources */,
@@ -435,6 +470,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0FCF946D26DF05B00092CC49 /* AnalyticsProtocolTests.swift in Sources */,
 				0FCF932A26D7E1A90092CC49 /* URLDispatcherTests.swift in Sources */,
 				0FCF933326D804510092CC49 /* URLRequestProtocolTests.swift in Sources */,
 				0FCF930826D7D54C0092CC49 /* DependencyTests.swift in Sources */,
@@ -599,10 +635,15 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AlterSolutionsChallengeCore/3DPartyLibraries/Analytics/Flurry",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.altersolutions.AlterSolutionsChallengeCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -626,10 +667,15 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/AlterSolutionsChallengeCore/3DPartyLibraries/Analytics/Flurry",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.altersolutions.AlterSolutionsChallengeCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
