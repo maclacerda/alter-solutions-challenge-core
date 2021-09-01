@@ -9,6 +9,6 @@ import Foundation
 
 public protocol AnalyticsProtocol: AnyObject {
 
-    func sendEvent(with event: [String: Any])
+    func sendEvent(with event: String, parameters: [String: Any])
 
 }

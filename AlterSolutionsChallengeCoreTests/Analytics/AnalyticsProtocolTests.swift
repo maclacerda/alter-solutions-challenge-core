@@ -13,7 +13,7 @@ class AnalyticsProtocolTests: XCTestCase {
     func testAnalytics_sendEvent_ShouldBeSucess() {
         let sut = AnalyticsSpy()
 
-        sut.sendEvent(with: [:])
+        sut.sendEvent(with: AnalyticsEventsSpy.eventName.rawValue, parameters: [:])
 
         XCTAssertTrue(sut.sendEventCalled)
     }
@@ -26,8 +26,14 @@ private class AnalyticsSpy: AnalyticsProtocol {
 
     private(set) var sendEventCalled = false
 
-    func sendEvent(with event: [String: Any]) {
+    func sendEvent(with event: String, parameters: [String: Any]) {
         sendEventCalled = true
     }
+
+}
+
+private enum AnalyticsEventsSpy: String {
+
+    case eventName = "event"
 
 }
