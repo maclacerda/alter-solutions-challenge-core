@@ -10,7 +10,7 @@ import XCTest
 
 class URLRequestTokenTests: XCTestCase {
 
-    func testCancel() {
+    func testURLRequestToken_cancelRequest_ShouldBeCanceledWithSuccess() {
         let task = URLSession(configuration: .default).dataTask(with: URL(string: "https://someurl.com")!)
         let sut = URLRequestTokenSpy(task: task)
 

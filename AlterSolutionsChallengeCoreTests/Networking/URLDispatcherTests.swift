@@ -10,7 +10,7 @@ import XCTest
 
 class URLDispatcherTests: XCTestCase {
 
-    func testDispatcherInit() {
+    func testURLDispatcher_init_ShouldBeCreateACorrectURLSession() {
         let sut = URLSessionDispatcher()
         XCTAssertNotNil(sut)
     }

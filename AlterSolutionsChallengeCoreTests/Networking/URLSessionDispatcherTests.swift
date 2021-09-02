@@ -10,7 +10,7 @@ import XCTest
 
 class URLSessionDispatcherTests: XCTestCase {
 
-    func testSuccess() {
+    func testURLSessionDispatcher_execute_ShouldBeSuccess() {
         let sut = URLSessionDispatcher()
         let request = URLRequestSpy("https://someurl.com")
 
@@ -25,7 +25,7 @@ class URLSessionDispatcherTests: XCTestCase {
         }
     }
 
-    func testFailue() {
+    func testURLSessionDispatcher_execute_ShouldBeFailure() {
         let sut = URLSessionDispatcher()
         let request = URLRequestSpy("https://some.com")
 

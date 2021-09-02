@@ -10,7 +10,7 @@ import XCTest
 
 class URLRequestProtocolTests: XCTestCase {
 
-    func test() {
+    func testURLRequest_buildURLRequest_ShouldBeNotThrowAnError() {
         let sut = URLRequestSpy("https://someurl.com")
 
         XCTAssertNoThrow(

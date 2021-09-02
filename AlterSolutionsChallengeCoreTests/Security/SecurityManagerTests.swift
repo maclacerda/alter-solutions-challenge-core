@@ -17,7 +17,7 @@ class SecurityManagerTests: XCTestCase {
 
     // MARK: - Tests
 
-    func testMakeSalt() {
+    func testSecurityManager_makeSalt_ShouldBeGeneratedCorrectSalt() {
         let salt = "TestMakeSalt"
         let expectedResult: [UInt8] = [27, 7, 21, 1, 62, 2, 10, 17, 60, 19, 34, 39]
         let sut = SecurityManager.shared
@@ -25,7 +25,7 @@ class SecurityManagerTests: XCTestCase {
         XCTAssertEqual(expectedResult, sut.makeSalt(salt))
     }
 
-    func testObfuscate() {
+    func testSecurityManager_obfuscate_ShouldBeObfuscatedStringWithSuccess() {
         var sut = SecurityManager.shared
         let expectedResult: [UInt8] = [2, 4, 21, 9, 30, 54, 1, 11, 16, 57, 8, 29, 13, 28, 48]
 
@@ -34,7 +34,7 @@ class SecurityManagerTests: XCTestCase {
         XCTAssertEqual(expectedResult, try sut.obfuscate("ChallengeMarcos"))
     }
 
-    func testReveal() {
+    func testSecurityManager_reveal_ShouldBeRevealedStringWithSuccess() {
         var sut = SecurityManager.shared
         let encrypted: [UInt8] = [2, 4, 21, 9, 30, 54, 1, 11, 16, 57, 8, 29, 13, 28, 48]
         let expectedResult = "ChallengeMarcos"
@@ -44,7 +44,7 @@ class SecurityManagerTests: XCTestCase {
         XCTAssertEqual(expectedResult, try sut.reveal(encrypted))
     }
 
-    func testObfuscateSaltEmpty() {
+    func testSecurityManager_obfuscateWithSaltEmpty_ShouldBeTrhowAnError() {
         var sut = SecurityManager.shared
 
         sut.salt = []
@@ -54,7 +54,7 @@ class SecurityManagerTests: XCTestCase {
         )
     }
 
-    func testRevealSaltEmpty() {
+    func testSecurityManager_revealWithSaltEmpty_ShouldBeThrowAnError() {
         var sut = SecurityManager.shared
 
         sut.salt = []
